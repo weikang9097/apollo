@@ -28,7 +28,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "`Item`")
-@SQLDelete(sql = "Update Item set IsDeleted = true, DeletedAt = ROUND(UNIX_TIMESTAMP(NOW(4))*1000) where Id = ?")
+@SQLDelete(sql = "UPDATE \"Item\" SET \"IsDeleted\" = true, \"DeletedAt\" = ROUND(DATE_PART('EPOCH',now())*1000) WHERE \"Id\" = ?")
 @Where(clause = "`IsDeleted` = false")
 public class Item extends BaseEntity {
 

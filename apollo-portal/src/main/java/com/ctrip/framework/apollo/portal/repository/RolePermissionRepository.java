@@ -36,6 +36,6 @@ public interface RolePermissionRepository extends PagingAndSortingRepository<Rol
   List<RolePermission> findByRoleIdIn(Collection<Long> roleId);
 
   @Modifying
-  @Query("UPDATE RolePermission SET IsDeleted = true, DeletedAt = ROUND(UNIX_TIMESTAMP(NOW(4))*1000), DataChange_LastModifiedBy = ?2 WHERE PermissionId in ?1 and IsDeleted = false")
+  @Query("UPDATE RolePermission SET isDeleted = true, deletedAt = ROUND(DATE_PART('EPOCH',now())*1000), dataChangeLastModifiedBy = ?2 WHERE permissionId in ?1 and isDeleted = false")
   Integer batchDeleteByPermissionIds(List<Long> permissionIds, String operator);
 }

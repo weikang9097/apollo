@@ -30,7 +30,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "`Role`")
-@SQLDelete(sql = "Update Role set IsDeleted = true, DeletedAt = ROUND(UNIX_TIMESTAMP(NOW(4))*1000) where Id = ?")
+@SQLDelete(sql = "UPDATE \"Role\" SET \"IsDeleted\" = true, \"DeletedAt\" = ROUND(DATE_PART('EPOCH',now())*1000) WHERE \"Id\" = ?")
 @Where(clause = "`IsDeleted` = false")
 public class Role extends BaseEntity {
   @Column(name = "`RoleName`", nullable = false)

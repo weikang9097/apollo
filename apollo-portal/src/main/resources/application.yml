@@ -18,6 +18,9 @@ spring:
     name: apollo-portal
   profiles:
     active: ${apollo_profile}
+  datasource:
+    hikari:
+      auto-commit: false
   jpa:
     properties:
       hibernate:
@@ -27,7 +30,7 @@ spring:
   session:
     store-type: jdbc
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
   servlet:
     multipart:
       max-file-size: 200MB  # import data configs

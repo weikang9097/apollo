@@ -36,6 +36,6 @@ public interface FavoriteRepository extends PagingAndSortingRepository<Favorite,
   Favorite findByUserIdAndAppId(String userId, String appId);
 
   @Modifying
-  @Query("UPDATE Favorite SET IsDeleted = true, DeletedAt = ROUND(UNIX_TIMESTAMP(NOW(4))*1000), DataChange_LastModifiedBy = ?2 WHERE AppId=?1 and IsDeleted = false")
+  @Query("UPDATE Favorite SET isDeleted = true, deletedAt = ROUND(DATE_PART('EPOCH',now())*1000), dataChangeLastModifiedBy = ?2 WHERE appId=?1 and isDeleted = false")
   int batchDeleteByAppId(String appId, String operator);
 }

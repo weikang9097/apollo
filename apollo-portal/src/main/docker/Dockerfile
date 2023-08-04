@@ -20,7 +20,7 @@
 
 FROM alpine:3.15.5
 
-ARG VERSION
+ARG VERSION=2.2.0
 ENV VERSION $VERSION
 
 COPY apollo-portal-${VERSION}-github.zip /apollo-portal/apollo-portal-${VERSION}-github.zip

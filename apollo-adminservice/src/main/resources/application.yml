@@ -18,6 +18,9 @@ spring:
     name: apollo-adminservice
   profiles:
     active: ${apollo_profile}
+  datasource:
+    hikari:
+      auto-commit: false
   cloud:
     consul:
       enabled: false
